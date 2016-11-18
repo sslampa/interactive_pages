@@ -5,7 +5,11 @@
   </head>
   <body>
     <h1>Hi/Lo Game</h1>
-    <input type="button" value="Check" onClick="game()"/>
-    <p id="feedback"></p>
+    <p><input type="button" value="Start New Game!" onClick="someObj.randomNum()"/></p>
+    <input id="guess" type="text" value="Guess Number!" onfocus="this.value=''"/>
+    <input type="button" value="Check" onClick="someObj.game()"/>
+    <h2 id="feedback">Start Guessing Above!</h2>
+    <p><h2>Guesses Left: <span id="guessesLeft">7</span></h2></p>
+    <p id="currentRand">"Current Random Number"<p>
   </body>
 </html>

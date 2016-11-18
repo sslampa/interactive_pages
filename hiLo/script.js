@@ -1,40 +1,30 @@
+var someObj = {
+  currentRand: 0,
+  currentGuess: 0,
+  counter: 7,
 
-function randomNum() {
-  return Math.floor(Math.random() * 100 + 1);
-}
+  randomNum: function() {
+    document.getElementById("guessesLeft").innerHTML = 7;
+    this.currentRand = Math.floor(Math.random() * 100 + 1);
+    document.getElementById("currentRand").innerHTML = this.currentRand;
+  },
 
-function checker(inputGuess, randValue) {
-  if (inputGuess > randValue) {
-    alert("Your guess is too high.");
-    return false;
-  } else if (inputGuess < randValue){
-    alert("Your guess is too low.");
-    return false;
-  } else if (inputGuess === randValue) {
-    alert("You guessed right!");
-    return true;
-  }
-}
+  game: function() {
+    this.currentGuess = document.getElementById("guess").value;
+    var end = false
 
-function game(){
-  var rand = randomNum(); //will either be a new random number or 0
-  var userInput = "";
-  var end = false
-  var x = 0;
-
-  while (x < 7 && !end) {
-      userInput = prompt("Enter your guess: ");
-      end = checker(userInput, rand);
-      alert(rand);
-      if (parseInt(userInput) === rand) {
-        break;
+    if (this.counter != 0) {
+      if (this.currentGuess > this.currentRand) {
+        document.getElementById("feedback").innerHTML = "Your guess is too high.";
+        this.counter--;
+        document.getElementById('guessesLeft').innerHTML = this.counter;
+      } else if (this.currentGuess < this.currentRand){
+        document.getElementById("feedback").innerHTML = "Your guess is too low.";
+        this.counter--;
+        document.getElementById('guessesLeft').innerHTML = this.counter;
+      } else if (parseInt(this.currentGuess) === this.currentRand) {
+        document.getElementById("feedback").innerHTML = "You guessed right! You Win!";
       }
-      x++;
-  }
-
-  if (end === false) {
-    document.getElementById("feedback").innerHTML = "You lose";
-  } else {
-    document.getElementById("feedback").innerHTML = "You win!";
+    }
   }
 }
