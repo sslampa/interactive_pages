@@ -7,11 +7,12 @@ var someObj = {
     document.getElementById("guessesLeft").innerHTML = 7;
     this.currentRand = Math.floor(Math.random() * 100 + 1);
     document.getElementById("currentRand").innerHTML = this.currentRand;
+    document.getElementById("guessesLeft").innerHTML = this.counter;
+    this.counter = 7;
   },
 
   game: function() {
     this.currentGuess = document.getElementById("guess").value;
-    var end = false
 
     if (this.counter != 0) {
       if (this.currentGuess > this.currentRand) {
